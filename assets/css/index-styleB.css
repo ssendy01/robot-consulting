@@ -1,0 +1,187 @@
+/* ========================================
+   Hero Section
+   ======================================== */
+
+.section-hero {
+  background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
+  color: var(--dark);
+  padding: 160px 0 120px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.section-hero .text-container {
+  margin-bottom: 56px;
+  text-align: center;
+}
+
+.section-hero h1 {
+  font-size: 3.75rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 36px;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.section-hero .desc {
+  font-size: 1.3rem;
+  color: var(--gray);
+  line-height: 1.9;
+  margin-bottom: 18px;
+  font-weight: 400;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 64px;
+}
+
+.hero-ctas .btn {
+  padding: 18px 42px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.hero-ctas .btn-primary {
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
+}
+
+.hero-ctas .btn-primary:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.35);
+  transform: translateY(-2px);
+}
+
+.hero-ctas .btn-secondary {
+  background: var(--white);
+  color: var(--dark);
+  border: 2px solid var(--formgray);
+}
+
+.hero-ctas .btn-secondary:hover {
+  border-color: var(--gray);
+  transform: translateY(-2px);
+}
+
+.scroll-indicator {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--gray);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ========================================
+   Pain Points Section
+   ======================================== */
+
+.section-pain {
+  background: var(--white);
+  padding: 120px 0;
+  border-top: 1px solid var(--formgray);
+}
+
+.section-pain .text-container {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-pain h2 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.section-pain .subtitle {
+  font-size: 1.2rem;
+  color: var(--gray);
+  font-weight: 400;
+}
+
+.section-pain .content-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 36px;
+}
+
+.pain-card {
+  background: var(--white);
+  border: 1px solid var(--formgray);
+  border-radius: 12px;
+  padding: 44px 36px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.pain-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.pain-card .card-icon {
+  font-size: 3rem;
+  margin-bottom: 24px;
+}
+
+.pain-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+
+.pain-card p {
+  font-size: 1.05rem;
+  color: var(--gray);
+  line-height: 1.75;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 768px) {
+  .section-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .section-hero .desc {
+    font-size: 1.15rem;
+  }
+
+  .section-pain h2 {
+    font-size: 2rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+  }
+}
