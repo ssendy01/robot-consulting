@@ -1,8 +1,9 @@
 /* ========================================
-   CSS Variables (Color System)
+   CSS Variables
    ======================================== */
 
 :root {
+  /* Colors */
   --primary: #FF6B35;
   --primary-dark: #E85D2B;
   --secondary: #5D5FEF;
@@ -13,10 +14,40 @@
   --light-gray: #f3f4f6;
   --white: #ffffff;
   --formgray: #dcdcdc;
+
+  /* Typography */
+  --font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-2xl: 64px;
+  --spacing-3xl: 80px;
+
+  /* Container */
+  --container-width: 1200px;
+  --container-padding: 20px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* ========================================
-   CSS Reset
+   Reset
    ======================================== */
 
 * {
@@ -30,11 +61,30 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", "Apple SD Gothic Neo", sans-serif;
-  line-height: 1.6;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
   color: var(--dark);
-  background: var(--white);
-  font-size: 16px;
+  background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
 
 img {
@@ -47,39 +97,32 @@ ul, ol {
   list-style: none;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  background: none;
-}
-
 /* ========================================
-   Common Layout
+   Layout - Section & Container
    ======================================== */
 
 section {
-  padding: 80px 0;
+  padding: var(--spacing-3xl) 0;
+  position: relative;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--container-padding);
 }
+
+/* ========================================
+   Text Container & Content Container
+   ======================================== */
 
 .text-container {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: var(--spacing-xl);
 }
 
 .content-container {
-  /* 실제 콘텐츠 영역 */
+  width: 100%;
 }
 
 /* ========================================
@@ -89,50 +132,49 @@ section {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.3;
-  margin-bottom: 20px;
+  color: var(--dark);
+  margin-bottom: var(--spacing-sm);
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 48px;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 36px;
 }
 
 h3 {
-  font-size: 1.75rem;
+  font-size: 24px;
 }
 
 h4 {
-  font-size: 1.25rem;
+  font-size: 20px;
 }
 
 p {
-  font-size: 1.125rem;
-  line-height: 1.8;
+  margin-bottom: var(--spacing-sm);
   color: var(--gray);
-  margin-bottom: 16px;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 36px;
   font-weight: 700;
   color: var(--dark);
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-md);
 }
 
 .subtitle {
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--gray);
-  margin-bottom: 40px;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: var(--spacing-sm);
 }
 
 .desc {
-  font-size: 1.125rem;
-  line-height: 1.8;
+  font-size: 18px;
   color: var(--gray);
+  line-height: 1.7;
 }
 
 /* ========================================
@@ -141,95 +183,98 @@ p {
 
 .btn {
   display: inline-block;
-  padding: 16px 32px;
-  font-size: 1.125rem;
+  padding: 14px 28px;
+  font-size: 16px;
   font-weight: 600;
   text-align: center;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
 }
 
-.btn-primary {
-  background: var(--primary);
+.btn.primary {
+  background-color: var(--primary);
   color: var(--white);
+  border-color: var(--primary);
 }
 
-.btn-primary:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-}
-
-.btn-secondary {
-  background: var(--secondary);
+.btn.primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
   color: var(--white);
-}
-
-.btn-secondary:hover {
-  background: #4a4cd9;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(93, 95, 239, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
-.btn-outline {
-  background: transparent;
+.btn.secondary {
+  background-color: transparent;
   color: var(--primary);
-  border: 2px solid var(--primary);
+  border-color: var(--primary);
 }
 
-.btn-outline:hover {
-  background: var(--primary);
+.btn.secondary:hover {
+  background-color: var(--primary);
   color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn.small {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.btn.large {
+  padding: 18px 36px;
+  font-size: 18px;
+  width: 100%;
+  max-width: 400px;
 }
 
 /* ========================================
-   Card Component
+   Card
    ======================================== */
 
 .card {
-  background: var(--white);
-  border-radius: 12px;
-  padding: 32px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background-color: var(--white);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   transition: all 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
-.card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 16px;
+.card .icon {
+  font-size: 40px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.card .cardtitle {
+  font-size: 20px;
+  font-weight: 700;
   color: var(--dark);
+  margin-bottom: var(--spacing-xs);
 }
 
-.card p {
-  font-size: 1rem;
-  line-height: 1.6;
+.card .carddesc {
+  font-size: 15px;
   color: var(--gray);
+  line-height: 1.6;
 }
 
 /* ========================================
-   Grid System
+   Grid
    ======================================== */
 
 .grid {
   display: grid;
-  gap: 32px;
-}
-
-.grid-2 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.grid-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.grid-4 {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
 }
 
 /* ========================================
@@ -240,51 +285,59 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  background: var(--white);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
   z-index: 1000;
+  padding: var(--spacing-sm) 0;
 }
 
 header .container {
+  padding: 0 var(--container-padding);
+}
+
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
 }
 
-.logo {
-  font-size: 1.5rem;
+.logo a {
+  font-size: 20px;
   font-weight: 700;
   color: var(--dark);
 }
 
-nav ul {
+.nav {
   display: flex;
-  gap: 32px;
+  align-items: center;
+  gap: var(--spacing-lg);
 }
 
-nav a {
-  font-size: 1rem;
+.nav a {
+  font-size: 15px;
   font-weight: 500;
   color: var(--dark);
   transition: color 0.3s ease;
 }
 
-nav a:hover {
+.nav a:hover {
   color: var(--primary);
 }
 
-.header-cta {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
 }
 
-.tel {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--dark);
+.mobile-toggle span {
+  width: 24px;
+  height: 3px;
+  background-color: var(--dark);
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
 /* ========================================
@@ -292,213 +345,125 @@ nav a:hover {
    ======================================== */
 
 footer {
-  background: var(--dark);
+  background-color: var(--dark);
   color: var(--white);
-  padding: 48px 0 24px;
+  padding: var(--spacing-2xl) 0 var(--spacing-md);
 }
 
-footer .container {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
 }
 
-.footer-info {
-  font-size: 0.875rem;
+.footer-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-subtitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-desc {
+  font-size: 14px;
+  color: var(--gray);
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
 }
 
-.footer-info h3 {
-  font-size: 1.25rem;
-  margin-bottom: 16px;
-  color: var(--white);
+.footer-section p {
+  font-size: 14px;
+  color: var(--gray);
+  margin-bottom: var(--spacing-xs);
 }
 
-.footer-links {
-  display: flex;
-  gap: 24px;
+.footer-links li {
+  margin-bottom: var(--spacing-xs);
 }
 
 .footer-links a {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  color: var(--gray);
   transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: var(--white);
+  color: var(--primary);
 }
 
-.footer-copyright {
-  text-align: center;
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
-  padding-top: 24px;
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-lg);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ========================================
-   Mobile Fixed CTA
-   ======================================== */
-
-.mobile-fixed-cta {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 16px;
-  background: var(--white);
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 999;
-  opacity: 0;
-  transform: translateY(100%);
-  transition: all 0.3s ease;
+.footer-bottom p {
+  font-size: 14px;
+  color: var(--gray);
 }
 
-.mobile-fixed-cta.visible {
-  opacity: 1;
-  transform: translateY(0);
+.footer-legal {
+  display: flex;
+  gap: var(--spacing-md);
 }
 
-.mobile-fixed-cta .btn {
-  width: 100%;
-}
-
-/* ========================================
-   Form Elements
-   ======================================== */
-
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 12px 16px;
-  font-size: 1rem;
-  font-family: inherit;
-  border: 1px solid var(--formgray);
-  border-radius: 8px;
-  transition: border-color 0.3s ease;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-}
-
-label {
-  display: block;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--dark);
-  margin-bottom: 8px;
-}
-
-.error-message {
-  display: block;
-  font-size: 0.875rem;
-  color: #ef4444;
-  margin-top: 4px;
-}
-
-/* ========================================
-   Utility Classes
-   ======================================== */
-
-.text-center {
-  text-align: center;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.mt-20 {
-  margin-top: 20px;
-}
-
-.mt-40 {
-  margin-top: 40px;
-}
-
-.mb-20 {
-  margin-bottom: 20px;
-}
-
-.mb-40 {
-  margin-bottom: 40px;
+.footer-legal a {
+  font-size: 14px;
+  color: var(--gray);
 }
 
 /* ========================================
    Responsive
    ======================================== */
 
-@media (max-width: 1024px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  section {
-    padding: 60px 0;
-  }
-
-  .grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 768px) {
   h1 {
-    font-size: 2rem;
+    font-size: 32px;
   }
 
   h2 {
-    font-size: 1.75rem;
+    font-size: 28px;
   }
 
-  h3 {
-    font-size: 1.5rem;
+  .title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .desc {
+    font-size: 16px;
   }
 
   section {
-    padding: 48px 0;
+    padding: var(--spacing-2xl) 0;
   }
 
-  .text-container {
-    margin-bottom: 40px;
-  }
-
-  .grid-2,
-  .grid-3,
-  .grid-4 {
-    grid-template-columns: 1fr;
-  }
-
-  nav ul {
+  .nav {
     display: none;
   }
 
-  .mobile-fixed-cta {
-    display: block;
+  .mobile-toggle {
+    display: flex;
   }
 
-  .btn {
-    padding: 14px 24px;
-    font-size: 1rem;
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
   }
 }
